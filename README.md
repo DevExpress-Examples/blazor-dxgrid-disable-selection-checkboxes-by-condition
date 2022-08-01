@@ -1,25 +1,21 @@
-# Product/Platform - Task
+# Blazor Grid - Disable Selection Checkboxes in Specific Rows
 
-This is the repository template for creating new examples. Describe the solved task here.
+You can display a Selection Column to allow users select data rows. However, you may want to disable selection for specific rows.
 
-Put a screenshot that illustrates the result here.
+![Grid with Disabled Selection Checkbox](result.png)
 
-Then, add implementation details (steps, code snippets, and other technical information in a free form), or add a link to an existing document with implementation details. 
+Use the **DxGridSelectionColumn**'s **CellDisplayTemplate** to put the CheckBox. Specify the lambda expression that defines whether the CheckBox is disabled for the [Enabled](https://docs.devexpress.com/Blazor/DevExpress.Blazor.Base.DxDataEditorBase-2.Enabled) property. Use the template context's [Selected](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridSelectionColumnCellDisplayTemplateContext.Selected) property to bind the CheckBox's [Checked](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1.Checked) value.
 
 ## Files to Look At
 
-- link.cs (VB: link.vb)
-- link.js
-- ...
+- [Index.razor](./CS/GridDisabledCheckboxes/Pages/Index.razor)
 
 ## Documentation
 
-- link
-- link
-- ...
+- [Selection Column](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn)
+- [CellDisplayTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn.CellDisplayTemplate)
 
 ## More Examples
 
-- link
-- link
-- ...
+- [Show Detail Information in DxFormLayout](https://github.com/DevExpress-Examples/blazor-DxDataGrid-Detail-Information-DxFormLayout)
+- [Implement an External Search Panel](https://github.com/DevExpress-Examples/blazor-datagrid-external-search-panel)
