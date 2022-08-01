@@ -11,6 +11,8 @@ You can display a Selection Column to allow users select data rows. However, you
 
 Use the **DxGridSelectionColumn**'s **CellDisplayTemplate** to put the CheckBox. Specify the lambda expression that defines whether the CheckBox is disabled for the [Enabled](https://docs.devexpress.com/Blazor/DevExpress.Blazor.Base.DxDataEditorBase-2.Enabled) property. Use the template context's [Selected](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridSelectionColumnCellDisplayTemplateContext.Selected) property to bind the CheckBox's [Checked](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1.Checked) value.
 
+In this example, the Grid disables CheckBoxes for rows where the **Summary** field value is **Mild**.
+
 ## Files to Look At
 
 - [Index.razor](./CS/GridDisabledCheckboxes/Pages/Index.razor)
