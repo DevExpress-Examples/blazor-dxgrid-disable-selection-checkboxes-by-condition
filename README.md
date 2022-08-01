@@ -1,3 +1,8 @@
+<!-- default badges list -->
+![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/520094985/22.1.4%2B)
+[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
+<!-- default badges end -->
+
 # Blazor Grid - Disable Selection Checkboxes in Specific Rows
 
 You can display a Selection Column to allow users select data rows. However, you may want to disable selection for specific rows.
