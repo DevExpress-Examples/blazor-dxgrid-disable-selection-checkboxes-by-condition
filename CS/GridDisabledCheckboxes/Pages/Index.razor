@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@using GridDisabledCheckboxes.Data
+@inject WeatherForecastService ForecastService
+
+<DxGrid Data="@forecasts"
+        CssClass="mw-1100">
+    <Columns>
+        <DxGridSelectionColumn Width="70px" AllowSelectAll="false">
+            <CellDisplayTemplate>
+                @{
+                    var item = (WeatherForecast)context.DataItem;
+                }
+                <DxCheckBox Checked="context.Selected" Enabled=@(item.Summary != "Mild") />
+            </CellDisplayTemplate>
+        </DxGridSelectionColumn>
+        <DxGridDataColumn Caption="Date" FieldName="Date" />
+        <DxGridDataColumn Caption="Temperature" FieldName="TemperatureF" />
+        <DxGridDataColumn Caption="Summary" FieldName="Summary" />
+    </Columns>
+</DxGrid>
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync() {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}
