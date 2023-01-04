@@ -4,14 +4,15 @@
 @inject WeatherForecastService ForecastService
 
 <DxGrid Data="@forecasts"
-        CssClass="mw-1100">
+        CssClass="mw-1100"
+        @bind-SelectedDataItems="@SelectedDataItems">
     <Columns>
         <DxGridSelectionColumn Width="70px" AllowSelectAll="false">
             <CellDisplayTemplate>
                 @{
                     var item = (WeatherForecast)context.DataItem;
                 }
-                <DxCheckBox Checked="context.Selected" Enabled=@(item.Summary != "Mild") />
+                <DxCheckBox @bind-Checked="context.Selected" Enabled=@(item.Summary != "Mild") />
             </CellDisplayTemplate>
         </DxGridSelectionColumn>
         <DxGridDataColumn Caption="Date" FieldName="Date" />
@@ -22,8 +23,10 @@
 
 @code {
     private WeatherForecast[]? forecasts;
+    IReadOnlyList<object> SelectedDataItems;
 
     protected override async Task OnInitializedAsync() {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        SelectedDataItems = forecasts.Where(f => f.Summary == "Warm").ToList();
     }
 }
