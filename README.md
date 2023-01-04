@@ -6,7 +6,7 @@
 
 # Grid for Blazor - Disable Selection Checkboxes in Specific Rows
 
-This example illustrates how to prevent users from selecting specific data items in the [DevExpress Grid for Blazor](https://docs.devexpress.com/Blazor/403143/grid). The Grid component's [selection column](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn) displays checkboxes that allow users to select and deselect items. In this example, the component disables these checkboxes for the items whose `Summary` field is set to `Mild`.
+This example illustrates how to prevent users from selecting specific data items in the [DevExpress Grid for Blazor](https://docs.devexpress.com/Blazor/403143/grid). The Grid component's [selection column](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn) displays checkboxes that allow users to select and deselect items. In this example, the component disables these checkboxes for items whose `Summary` field is set to `Mild`.
 
 ![Grid with Disabled Selection Checkbox](result.png)
 
