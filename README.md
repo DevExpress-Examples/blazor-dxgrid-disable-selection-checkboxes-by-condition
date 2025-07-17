@@ -19,6 +19,12 @@ Follow the steps below to allow users to select only the items that match your c
 
 3. Set the checkbox's [Enabled](https://docs.devexpress.com/Blazor/DevExpress.Blazor.Base.DxDataEditorBase-2.Enabled) property to `true` or `false`, depending on whether the current item matches your criteria.
 
+4. Define a custom [HeaderTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn.HeaderTemplate) for the selection column and place a [DxCheckBox with inderminate state](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1#indeterminate-state) inside it to act as the Select All control.
+
+5. Implement logic in the checkbox [CheckedChanged](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1.CheckedChanged) event to manually update the grid’s selection.
+
+6. Handle the DxGrid [SelectedDataItemsChanged](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.SelectedDataItemsChanged) event of to keep the Select All checkbox in sync with the actual selection state.
+
 ## Files to Review
 
 - [Index.razor](./CS/GridDisabledCheckboxes/Pages/Index.razor)
@@ -27,6 +33,7 @@ Follow the steps below to allow users to select only the items that match your c
 
 - [Selection Column](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn)
 - [Cell Display Template](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn.CellDisplayTemplate)
+- [Header Template](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridSelectionColumn.HeaderTemplate)
 
 ## More Examples
 
