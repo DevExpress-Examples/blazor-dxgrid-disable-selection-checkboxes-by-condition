@@ -27,7 +27,7 @@ Follow the steps below to enable selection only for items matching your criteria
 
 5. Configure this checkbox to [support three states](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1#bind-to-custom-data-types) (checked, unchecked, and indeterminate).
 
-6. In the [CheckedChanged](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1.CheckedChanged) event, select/deselect all Grid records matching your criteria.
+6. In the [CheckedChanged](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxCheckBox-1.CheckedChanged) event, select/deselect all Grid records that match your criteria.
 
 7. Update the **Select All** checkbox state when the Grid raises the [SelectedDataItemsChanged](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.SelectedDataItemsChanged) event.
 
@@ -43,7 +43,7 @@ Follow the steps below to enable selection only for items matching your criteria
 
 ## More Examples
 
-- [Blazor Grid - How to display detail information using DxFormLayout](https://github.com/DevExpress-Examples/blazor-DxGrid-Detail-Information-DxFormLayout)
+- [Blazor Grid - How to display detailed information using DxFormLayout](https://github.com/DevExpress-Examples/blazor-DxGrid-Detail-Information-DxFormLayout)
 - [Blazor Grid - How to delete selected rows](https://github.com/DevExpress-Examples/blazor-dxgrid-delete-selected-rows)
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
