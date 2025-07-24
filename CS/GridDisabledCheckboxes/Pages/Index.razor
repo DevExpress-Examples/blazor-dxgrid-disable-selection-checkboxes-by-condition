@@ -1,13 +1,22 @@
 ﻿@page "/"
-
 @using GridDisabledCheckboxes.Data
 @inject WeatherForecastService ForecastService
 
-<DxGrid Data="@forecasts"
+<DxGrid @ref="Grid"
+        Data="@forecasts"
         CssClass="mw-1100"
-        @bind-SelectedDataItems="@SelectedDataItems">
+        SelectedDataItems="@SelectedDataItems"
+        SelectedDataItemsChanged="OnSelectedDataItemsChanged">
     <Columns>
-        <DxGridSelectionColumn Width="70px" AllowSelectAll="false">
+        <DxGridSelectionColumn Width="70px" AllowSelectAll="true">
+            <HeaderTemplate>
+                <DxCheckBox Checked="SelectedStatus"
+                            CheckedChanged="@((Selected value) => CheckedChanged(value))"
+                            AllowIndeterminateStateByClick="false"
+                            ValueChecked="@Selected.All"
+                            ValueUnchecked="@Selected.None"
+                            ValueIndeterminate="@Selected.Some" />
+            </HeaderTemplate>
             <CellDisplayTemplate>
                 @{
                     var item = (WeatherForecast)context.DataItem;
@@ -22,11 +31,55 @@
 </DxGrid>
 
 @code {
+    private enum Selected { All, None, Some }
+
+    private IGrid Grid { get; set; }
+    private Selected SelectedStatus { get; set; }
+
     private WeatherForecast[]? forecasts;
-    IReadOnlyList<object> SelectedDataItems;
+    private IReadOnlyList<object> SelectedDataItems;
 
     protected override async Task OnInitializedAsync() {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
         SelectedDataItems = forecasts.Where(f => f.Summary == "Warm").ToList();
+        UpdateSelectedStatus(SelectedDataItems.OfType<WeatherForecast>().ToList());
+    }
+
+    private void CheckedChanged(Selected value) {
+        var gridItems = forecasts.Where(item => item.Summary != "Mild").ToList();
+
+        switch (value) {
+            case Selected.All:
+                SelectedDataItems = gridItems;
+                break;
+            case Selected.None:
+                SelectedDataItems = new List<object>();
+                break;
+        }
+
+        SelectedStatus = value;
+    }
+
+    private void OnSelectedDataItemsChanged(IReadOnlyList<object> newSelection) {
+        var selectedItems = newSelection
+            .OfType<WeatherForecast>()
+            .Where(item => item.Summary != "Mild")
+            .ToList();
+        UpdateSelectedStatus(selectedItems);
+    }
+
+    private void UpdateSelectedStatus(List<WeatherForecast> selectedItems) {
+        var gridItems = forecasts.Where(item => item.Summary != "Mild").ToList();
+        var areEqual = new HashSet<WeatherForecast>(gridItems).SetEquals(selectedItems.OfType<WeatherForecast>());
+
+        if (selectedItems.Count == 0) {
+            SelectedStatus = Selected.None;
+        }
+        else if (areEqual) {
+            SelectedStatus = Selected.All;
+        }
+        else {
+            SelectedStatus = Selected.Some;
+        }
     }
 }
