@@ -33,7 +33,7 @@ Follow the steps below to enable selection only for items matching your criteria
 
 ## Files to Review
 
-- [Index.razor](./CS/GridDisabledCheckboxes/Pages/Index.razor)
+- [Index.razor](./CS/GridDisabledCheckboxes/Components/Pages/Index.razor)
 
 ## Documentation
 
